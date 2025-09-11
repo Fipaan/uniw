@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My First Webpage</title>
+        <style>
+            body {
+                font-size: 30px;
+            }
+            table#subjects th {
+                border: 3px solid #181818;
+            }
+            table#subjects td {
+                border: 3px solid #181818;
+            }
+            ul {
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header section -->
+        <h1>Mozgovoy Roman</h1>
+        <h2>WEB Technologies Frontend</h2>
+        <!-- About me section -->
+        <table>
+            <tr>
+                <th><h3>About Me:</h3></th>
+                <td><p>
+                    I'm roman, I love coding, already have some pet projects,<br>
+                    that I'm currently working on. Most of them are C projects,<br>
+                    because I love how this language doesn't try to hide<br>
+                    anything from you, and you can do whatever you want.
+                </p></td>
+            </tr>
+            <tr>
+                <th><h3>Hobbies:</h3></th>
+                <td><ol>
+                    <li>💻 Programming</li>
+                    <li>🎮 Gaming</li>
+                    <li>📺 Watching TV Series</li>
+                </ol></td>
+            </tr>
+            <tr>
+                <th><h3>Favorite<br>websites:</h3></th>
+                <td><ul>
+                    <li><a href="https://www.vim.org/">vim official page</a></li>
+                    <li><a href="https://www.raylib.com/">raylib official page</a></li>
+                    <li><a href="http://localhost:8000/">localhost</a></li>
+                </ul></td>
+            </tr>
+        </table>
+        <!-- Subjects section -->
+        <table id="subjects">
+            <tr>
+                <th>Subject</th>
+                <th>Day</th>
+                <th>Time</th>
+            </tr>
+            <tr>
+                <td>Math</td>
+                <td>Monday</td>
+                <td>8:00-13:00</td>
+            </tr>
+            <tr>
+                <td>Foreign Language</td>
+                <td>Thursday</td>
+                <td>10:00-14:00</td>
+            </tr>
+            <tr>
+                <td>Web Technologies</td>
+                <td>Friday</td>
+                <td>11:00-13:00</td>
+            </tr>
+        </table>
+        <!-- Form section -->
+        <form action="" method="get">
+            <div>
+                <label for="name">Name: </label>
+                <input type="text" name="name" required />
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" name="email" required />
+            </div>
+            <div>
+                <label for="color">Favorite color: </label>
+                <input type="text" name="color" required />
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+        <!-- Others section -->
+        <p>
+            I feel okay today 🙂<br>
+            Was trying to play game in free hour, but it suddenly was<br>
+            updating with horrible internet speed 😔<br>
+            So I decided to work on my pet project 🧑‍💻
+        </p>
+        <button
+            style="height:60px;font-size:30px;"
+            onclick="alert('Hi, you clicked me!')">Click me!</button>
+        <h3>Here's things I like:</h3>
+        <img alt="4 bananas on white background" height="300px"
+                src="https://www.bobtailfruit.co.uk/media/mageplaza/blog/post/4/2/42e9as7nataai4a6jcufwg.jpeg">
+        <img alt="strawberry milkshake, with strawberry on top of it with straw on white background" height="300px"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Strawberry_milk_shake_%28cropped%29.jpg/250px-Strawberry_milk_shake_%28cropped%29.jpg">
+        <h3>My Mood Today:</h3>
+    </body>
+</html>
