@@ -9,13 +9,33 @@
                 font-size: 30px;
             }
             table#subjects th {
-                border: 3px solid #181818;
+                border: 3px solid #E7E7E7;
+            }
+            table#about_me th {
+                width: 200px;
+                word-wrap: break-word;
             }
             table#subjects td {
-                border: 3px solid #181818;
+                border: 3px solid #E7E7E7;
             }
             ul {
                 margin: 0 auto;
+            }
+            .text_sized, .text_sized * {
+                min-height: 60px;
+                font-size:30px;
+            }
+            .ver_align {
+                display: grid;
+            }
+            body > * {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            body, input, textarea, button {
+                background-color: #181818;
+                color: #E7E7E7;
             }
         </style>
     </head>
@@ -24,7 +44,7 @@
         <h1>Mozgovoy Roman</h1>
         <h2>WEB Technologies Frontend</h2>
         <!-- About me section -->
-        <table>
+        <table id="about_me">
             <tr>
                 <th><h3>About Me:</h3></th>
                 <td><p>
@@ -43,7 +63,7 @@
                 </ol></td>
             </tr>
             <tr>
-                <th><h3>Favorite<br>websites:</h3></th>
+                <th><h3>Favorite websites:</h3></th>
                 <td><ul>
                     <li><a href="https://www.vim.org/">vim official page</a></li>
                     <li><a href="https://www.raylib.com/">raylib official page</a></li>
@@ -75,7 +95,7 @@
             </tr>
         </table>
         <!-- Form section -->
-        <form action="" method="get">
+        <form class="text_sized ver_align" action="" method="get">
             <div>
                 <label for="name">Name: </label>
                 <input type="text" name="name" required />
@@ -93,20 +113,22 @@
             </div>
         </form>
         <!-- Others section -->
+        <h3>My Mood Today:</h3>
         <p>
             I feel okay today 🙂<br>
             Was trying to play game in free hour, but it suddenly was<br>
             updating with horrible internet speed 😔<br>
             So I decided to work on my pet project 🧑‍💻
         </p>
-        <button
-            style="height:60px;font-size:30px;"
-            onclick="alert('Hi, you clicked me!')">Click me!</button>
         <h3>Here's things I like:</h3>
-        <img alt="4 bananas on white background" height="300px"
-                src="https://www.bobtailfruit.co.uk/media/mageplaza/blog/post/4/2/42e9as7nataai4a6jcufwg.jpeg">
-        <img alt="strawberry milkshake, with strawberry on top of it with straw on white background" height="300px"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Strawberry_milk_shake_%28cropped%29.jpg/250px-Strawberry_milk_shake_%28cropped%29.jpg">
-        <h3>My Mood Today:</h3>
+        <div>
+            <img alt="4 yellow bananas" height="300px"
+                    src="assets/banana.png">
+            <img alt="strawberry milkshake, with strawberry on top of it with straw" height="300px"
+                    src="assets/milkshake.png">
+        </div>
+        <div>
+            <button class="text_sized" onclick="alert('Hi, you clicked me!')">Click me!</button>
+        </div>
     </body>
 </html>
