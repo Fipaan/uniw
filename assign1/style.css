@@ -1,0 +1,176 @@
+:root {
+    --foreground-color:   #E7E7E7;
+    --background-color:   #181818;
+    --link-color:         #99DDFF;
+    --link-color-visited: #CC99FF;
+    --link-color-hovered: #ff9999;
+    --p-font-size:        1.3rem;
+    --p-font-scale:       1.2;
+}
+/* FONTS STYLE */
+@font-face {
+    font-family: "Iosevka";
+    src: "assets/fonts/iosevka-regular.ttf";
+}
+@font-face {
+    font-family: "Han-Sans";
+    src: "assets/fonts/source-han-sans-regular";
+}
+body, .han-sans {
+    font-family: "Han-Sans";
+}
+h1, h2, h3, h4, h5, h6, h7, p, label {
+    font-family: "Iosevka";
+    word-wrap: break-word;
+}
+h1 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 7)); }
+h2 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 6)); }
+h3 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 5)); }
+h4 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 4)); }
+h5 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 3)); }
+h6 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 2)); }
+h7 { font-size: calc(var(--p-font-size) * pow(var(--p-font-scale), 1)); }
+li, a, p, label {
+    font-size: var(--p-font-size);
+}
+h1, h2, h3, h4, h5, h6, h7, label, th {
+    font-weight: bold;
+}
+/* SECTIONS STYLE */
+body .section {
+    width: 70rem;
+    margin: auto;
+}
+body .section > * {
+    width: 50rem;
+    margin: 0 auto;
+}
+.section, .section > * {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#header-section-nav {
+    width: 20rem;
+    display: grid;
+    justify-content: start;
+    font-size: 1.3rem;
+}
+#header-section h4 {
+    margin: 0px 0px;
+    display: flex;
+    justify-content: center;
+}
+#header-section {
+    background-color: #120520;
+}
+#about-me-section {
+    background-color: #140A1E;
+}
+#subjects-section {
+    background-color: #150E1C;
+}
+#form-section {
+    background-color: #17131A;
+}
+#others-section {
+    background-color: #181818;
+}
+
+body #others-section div {
+    display: flex;
+}
+/* COLORS STYLE */
+a:link {
+    color: var(--link-color);
+}
+a {
+    transition: color 0.05s ease-in-out;
+}
+a:visited {
+    color: var(--link-color-visited);
+}
+a:hover {
+    transition: color 0.2s ease-in-out;
+    color: var(--link-color-hovered)
+}
+#header-section-nav a {
+    color: #CCBBFF;
+    transition: color 0.05s ease-in-out, letter-spacing 0.05s ease-in-out;
+}
+#header-section-nav a:hover {
+    transition: color 0.2s ease-in-out, letter-spacing 0.1s ease-in-out;
+    color: #DD88FF;
+    letter-spacing: 3px;
+}
+/* OTHERS STYLE */
+.table-full-width {
+    display: table !important;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 60rem !important;
+}
+table#subjects {
+    font-size: calc(1.1 * var(--p-font-size));
+}
+table#subjects th, table#subjects td {
+    border: 3px solid #E7E7E7;
+    padding: 1px 7px;
+}
+table#about-me th {
+    text-align: center;
+    font-size: calc(1.3 * var(--p-font-size));
+    width: 25%;
+}
+table#about-me td {
+    font-size: calc(1.1 * var(--p-font-size));
+}
+.form-table {
+    display: table !important;
+}
+.form-table-row {
+    display: table-row;
+}
+.form-table-cell {
+    display: table-cell;
+}
+.form-table-row label {
+    width: 30%;
+}
+.form-table-row input {
+    width: 70%;
+}
+ul {
+    margin: 0 auto;
+}
+.text-sized, .text-sized * {
+    min-height: calc(2 * var(--p-font-size));
+    font-size: calc(1.1 * var(--p-font-size));
+}
+.ver-align {
+    display: grid;
+}
+html {
+    font-size: min(24px, 1.2rem);
+}
+body, input, textarea, button {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+.img-shade {
+    box-shadow: 3px 3px 1px #FFFFFF22;
+    -webkit-box-shadow: 3px 3px 1px #FFFFFF22;
+    -moz-box-shadow: 3px 3px 1px #FFFFFF22;
+    margin: 3px;
+    position: relative;
+    transition: transform 0.05s ease-in-out, filter 0.05s ease-in-out;
+}
+.img-shade:hover {
+    filter: sepia(0%) saturate(100%) brightness(130%) hue-rotate(0deg);
+    transform: translateX(5px) translateY(5px);
+    transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
