@@ -5,14 +5,14 @@
     --link-color-visited: #CC99FF;
     --link-color-hovered: #ff9999;
     --focus-color:        #ff9999;
-    --p-font-size:        1.3rem;
+    --p-font-size:        min(1.3rem, 21px);
     --p-font-scale:       1.2;
-    --h6-font-scale:      calc(var(--p-font-size)  * var(--p-font-scale));
-    --h5-font-scale:      calc(var(--h6-font-size) * var(--p-font-scale));
-    --h4-font-scale:      calc(var(--h5-font-size) * var(--p-font-scale));
-    --h3-font-scale:      calc(var(--h4-font-size) * var(--p-font-scale));
-    --h2-font-scale:      calc(var(--h3-font-size) * var(--p-font-scale));
-    --h1-font-scale:      calc(var(--h2-font-size) * var(--p-font-scale));
+    --h6-font-size:       calc(var(--p-font-size)  * var(--p-font-scale));
+    --h5-font-size:       calc(var(--h6-font-size) * var(--p-font-scale));
+    --h4-font-size:       calc(var(--h5-font-size) * var(--p-font-scale));
+    --h3-font-size:       calc(var(--h4-font-size) * var(--p-font-scale));
+    --h2-font-size:       calc(var(--h3-font-size) * var(--p-font-scale));
+    --h1-font-size:       calc(var(--h2-font-size) * var(--p-font-scale));
     --page-full-size:     70rem;
 }
 /* FONTS STYLE */
@@ -129,7 +129,9 @@ a:hover {
     display: table !important;
     border-collapse: collapse;
     table-layout: fixed;
-    width: calc(var(--page-full-size) * 0.9) !important;
+    max-width: calc(var(--page-full-size) * 0.9) !important;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 table#subjects {
     font-size: calc(1.1 * var(--p-font-size));
