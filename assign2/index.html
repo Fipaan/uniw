@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My First Webpage</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="section" id="header-section">
+            <h2>Mozgovoy Roman</h2>
+            <h3>WEB Technologies Frontend</h3>
+            <h4>Navigation:</h4>
+            <nav id="header-section-nav">
+                <ul>
+                    <li><a href="#about-me-section">About Me</a></li>
+                    <li><a href="#subjects-section">Subjects</a></li>
+                    <li><a href="#form-section"    >Form</a></li>
+                    <li><a href="#others-section"  >Others</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="section" id="about-me-section">
+            <table class="table-full-width" id="about-me">
+                <tr>
+                    <th>About Me:</th>
+                    <td><p>
+                        I'm roman, I love coding, already have some pet projects,
+                        that I'm currently working on. Most of them are C projects,
+                        because I love how this language doesn't try to hide
+                        anything from you, and you can do whatever you want.
+                    </p></td>
+                </tr>
+                <tr>
+                    <th>Hobbies:</th>
+                    <td><ol>
+                        <li>💻 Programming</li>
+                        <li>🎮 Gaming</li>
+                        <li>📺 Watching TV Series</li>
+                    </ol></td>
+                </tr>
+                <tr>
+                    <th>Favorite websites:</th>
+                    <td><ul>
+                        <li><a href="https://www.vim.org/">vim official page</a></li>
+                        <li><a href="https://www.raylib.com/">raylib official page</a></li>
+                        <li><a href="http://localhost:8000/">localhost</a></li>
+                    </ul></td>
+                </tr>
+            </table>
+        </div>
+        <div class="section" id="subjects-section">
+            <h4>My subjects:</h4>
+            <table class="table-full-width" id="subjects">
+                <tr>
+                    <th>Subject</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Math</td>
+                    <td>Monday</td>
+                    <td>8:00-13:00</td>
+                </tr>
+                <tr>
+                    <td>Foreign Language</td>
+                    <td>Thursday</td>
+                    <td>10:00-14:00</td>
+                </tr>
+                <tr>
+                    <td>Web Technologies</td>
+                    <td>Friday</td>
+                    <td>11:00-13:00</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section" id="form-section">
+            <form class="text-sized ver-align form-table" action="" method="get">
+                <div class="form-table-row">
+                    <label class="form-table-cell" for="name">Name: </label>
+                    <input class="form-table-cell" type="text" name="name" required />
+                </div>
+                <div class="form-table-row">
+                    <label class="form-table-cell" for="email">Email: </label>
+                    <input class="form-table-cell" type="email" name="email" required />
+                </div>
+                <div class="form-table-row">
+                    <label class="form-table-cell" for="color">Favorite color: </label>
+                    <input class="form-table-cell" type="text" name="color" required />
+                </div>
+                <div class="form-table-row">
+                    <input class="form-table-cell" type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+        <div class="section" id="others-section">
+            <h4>My Mood Today:</h4>
+            <p class="han-sans">
+                I feel okay today 🙂<br>
+                Was trying to play game in free hour, but it suddenly was<br>
+                updating with horrible internet speed 😔<br>
+                So I decided to work on my pet project 🧑‍💻
+            </p>
+            <h4>Here's things I like:</h4>
+            <div class="imgs-row">
+                <img class="img-shade" alt="4 yellow bananas"
+                        src="assets/banana.png">
+                <img class="img-shade" alt="strawberry milkshake, with strawberry on top of it with straw"
+                        src="assets/milkshake.png">
+            </div>
+            <div>
+                <button class="text-sized" onclick="alert('Hi, you clicked me!')">Click me!</button>
+            </div>
+        </div>
+    </body>
+</html>
