@@ -1,0 +1,101 @@
+:root {
+    --min-red-foreground-color: #FFBBBB; /* TODO: use accent color */
+    --max-red-foreground-color: #FF5555; /* TODO: use accent color */
+    --min-red-background-color: #770000; /* TODO: use accent color */
+    --max-red-background-color: #330000; /* TODO: use accent color */
+    
+    --foreground-color:         color-mix(in srgb, var(--max-red-foreground-color)  0%, var(--min-red-foreground-color));
+    --nav-a-color:              color-mix(in srgb, var(--max-red-foreground-color) 40%, var(--min-red-foreground-color));
+    --nav-a-hover-color:        color-mix(in srgb, var(--max-red-foreground-color) 10%, var(--min-red-foreground-color));
+    
+    --background-color:         color-mix(in srgb, var(--max-red-background-color) 100%, var(--min-red-background-color));
+    --header-background:        color-mix(in srgb, var(--max-red-background-color) 60%, var(--min-red-background-color));
+    --button-background:        color-mix(in srgb, var(--max-red-background-color) 40%, var(--min-red-background-color));
+    --sidebar-background:       color-mix(in srgb, var(--max-red-background-color) 50%, var(--min-red-background-color));
+}
+@font-face {
+    font-family: "Iosevka";
+    src: url("../assets/fonts/iosevka-regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Han-Sans";
+    src: url("../fonts/source-han-sans-regular.ttf") format("truetype");
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Iosevka";
+    line-height: 1.5;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    color: var(--foreground-color);
+    background: var(--background-color);
+} 
+header { 
+    background: var(--header-background); 
+    padding: 1rem; 
+} 
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+} 
+nav ul { 
+    list-style: none; 
+    display: flex; 
+    gap: 1rem; 
+    } 
+nav a { 
+    text-decoration: none; 
+    color: var(--nav-a-color);
+    transition: color 0.1s ease-in-out;
+}
+nav a:hover {
+    color: var(--nav-a-hover-color);
+}
+main { 
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem; 
+    padding: 2rem; 
+} 
+.projects { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 1.5rem; 
+} 
+.project-card { 
+    border: 1px solid #ccc; 
+    padding: 1rem; 
+    border-radius: 6px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem; 
+} 
+.project-card h3 { 
+    margin-bottom: 0.25rem; 
+} 
+.project-card button { 
+    align-self: flex-start; 
+    padding: 0.5rem 1rem; 
+    background: var(--button-background); 
+    color: var(--foreground-color); 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+.sidebar { 
+    background: var(--sidebar-background); 
+    padding: 1rem; 
+    border-radius: 6px; 
+} 
+footer { 
+    background: var(--header-background); 
+    text-align: center; 
+    padding: 1rem;
+}

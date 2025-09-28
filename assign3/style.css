@@ -136,6 +136,13 @@ body {
 #header a:hover {
     color: var(--link-hovered-color);
 }
+#portfolioPage {
+    color: var(--foreground-color);
+    transition: color 0.1s ease-in-out;
+}
+#portfolioPage:hover {
+    color: var(--link-hovered-color);
+}
 #footer {
     grid-area: footer;
     background: var(--header-background-color);
