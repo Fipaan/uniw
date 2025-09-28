@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Silksong showcase</title>
+        <link href="style.css" rel="stylesheet">
+        <script src="script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="main()" id="body" class="navStateDisabled">
+        <script src="hot-reload.js"></script>
+        <div id="header">
+            <img src="assets/images/silksong_logo.png">
+            <h1>Silksong Showcase</h1>
+            <div id="headerLinkList">
+                <a href="https://hollowknightsilksong.com">Official Page</a>
+                <a href="https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/">Steam Page</a>
+            </div>
+        </div>
+        <div id="navigation" class="pageTop">
+            <div id="navButton">
+                <button
+                    type="button"
+                    aria-controls="navEntriesNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    onclick="switchNav(body, true)">
+                </button>
+            </div>
+            <div id="navEntries">
+                <nav id="navEntriesNav">
+                    <ul>
+                        <li><a href="#sectionInfo"  >Info</a></li>
+                        <li><a href="#sectionCards" >Cards</a></li>
+                        <li><a href="#sectionImages">Images</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="content" class="pageTop">
+            <div id="sectionInfo">
+                <h3>About game</h3>
+                <div>
+                    <p>As the lethal hunter Hornet, adventure through a kingdom ruled by silk and song! Captured and taken to this unfamiliar world, prepare to battle mighty foes and solve ancient mysteries as you ascend on a deadly pilgrimage to the kingdom’s peak.</p>
+                    <p>Hollow Knight: Silksong is the epic sequel to Hollow Knight, the award winning action-adventure. Journey to all-new lands, discover new powers, battle vast hordes of bugs and beasts and uncover secrets tied to your nature and your past.</p>
+                </div>
+            </div>
+            <div id="sectionCards" class="tcDiv">
+                <div><h3>Character Cards</h3></div>
+                <div class="tcContent cardContainer">
+                    <div class="cardGrid">
+                        <div class="title">
+                            <h3>Lace</h3>
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/lace.png">
+                        </div>
+                        <div class="text">
+                            <p>A lithe fencer wielding a gilded pin, the traditional weapon of Pharloom. Lace is a dangerous foe, cloaked in mystery, who’ll delight at causing Hornet’s swift, skewered demise.</p>
+                        </div>
+                        <div class="button">
+                            <a href="https://hollowknight.fandom.com/wiki/Lace">More info...</a>
+                        </div>
+                    </div>
+                    <div class="cardGrid">
+                        <div class="title">
+                            <h3>Shakra</h3>
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/shakra.png">
+                        </div>
+                        <div class="text">
+                            <p>Fierce and intimidating, Shakra is a warrior seeking her master, who vanished under strange circumstances. Shakra’s clan are skilled fighters who can handle their own in the kingdom’s wilds.</p>
+                        </div>
+                        <div class="button">
+                            <a href="https://hollowknight.fandom.com/wiki/Shakra">More info...</a>
+                        </div>
+                    </div>
+                    <div class="cardGrid">
+                        <div class="title">
+                            <h3>Forge Daughter</h3>
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/forge_daughter.png">
+                        </div>
+                        <div class="text">
+                            <p>She is a hulking being and, much like the rest of the inhabitants of the Deep Docks, seems to be comprised of bells; a small sleigh bell for her head and a large church bell making up her body. Forge-Daughter also appears to refer to herself using the "royal we".</p>
+                        </div>
+                        <div class="button">
+                            <a href="https://hollowknight.fandom.com/wiki/Forge-Daughter">More info...</a>
+                        </div>
+                    </div>
+                    <div class="cardGrid" style="display: none;">
+                        <div class="title">
+                            <h3>Grindle</h3>
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/grindle.png">
+                        </div>
+                        <div class="text">
+                            <p>"Hoho, free at last! Locked up in here much too long, we was! Nasty place to keep a poor little snitchbug! You’re smellin’ fancy though... Bet you got some nice shinies hidden in that cloak!"</p>
+                        </div>
+                        <div class="button">
+                            <a href="https://hollowknight.fandom.com/wiki/Grindle">More info...</a>
+                        </div>
+                    </div>
+                    <div class="cardGrid">
+                        <div class="title">
+                            <h3>Sherma</h3>
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/sherma.png">
+                        </div>
+                        <div class="text">
+                            <p>An optimistic pilgrim on a spiritual journey. Sherma’s path may often cross with Hornet’s own, but his lack of combat and acrobatic prowess can land him in desperate need of aid.</p>
+                        </div>
+                        <div class="button">
+                            <a href="https://hollowknight.fandom.com/wiki/Sherma">More info...</a>
+                        </div>
+                    </div>
+                    <div class="cardGrid">
+                        <div class="title">
+                            <h3>Bell Beast</h3>
+                        </div>
+                        <div class="image">
+                            <img src="assets/images/bell_beast.png">
+                        </div>
+                        <div class="text">
+                            <p>Huge, hardbone bug that lives within and travels through the veins of old bells across Pharloom.</p>
+                            <hr>
+                            <p>This one has allied themself with me, either as thanks for their saving or respect for one judged as equal. Whichever the reason, their fellowship is welcome.</p>
+                        </div>
+                        <div class="button">
+                            <a href="https://hollowknight.fandom.com/wiki/Bell_Beast">More info...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sectionImages">
+                <div class="gallery">
+                    <div>
+                        <h3>Fight with Bell Beast boss</h3>
+                        <img src="assets/images/screenshots/bell_beast.png">
+                    </div>
+                    <div>
+                        <h3>Bellhart location</h3>
+                        <img src="assets/images/screenshots/bellhart.png">
+                    </div>
+                    <div>
+                        <h3>Chapel Maid NPC</h3>
+                        <img src="assets/images/screenshots/chapel_maid.png">
+                    </div>
+                    <div>
+                        <h3>(ACT 2) Citadel location</h3>
+                        <img src="assets/images/screenshots/citadel.png">
+                    </div>
+                    <div>
+                        <h3>Fourth Chorus boss</h3>
+                        <img src="assets/images/screenshots/fourth_chorus.png">
+                    </div>
+                    <div>
+                        <h3>Trailer fight with Lace</h3>
+                        <img src="assets/images/screenshots/lace_fight.png">
+                    </div>
+                    <div>
+                        <h3>Game First Screen</h3>
+                        <img src="assets/images/screenshots/start_location.png">
+                    </div>
+                    <div>
+                        <h3>The Marrow location</h3>
+                        <img src="assets/images/screenshots/the_marrow.png">
+                    </div>
+                    <div>
+                        <h3>Fight with The Widow boss</h3>
+                        <img src="assets/images/screenshots/widow_fight.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <h1>Hollow Knight: Silksong</h1>
+        </div>
+    </body>
+</html>

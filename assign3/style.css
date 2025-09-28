@@ -1,0 +1,381 @@
+:root {
+    --min-red-foreground-color: #FFBBBB; /* TODO: use accent color */
+    --max-red-foreground-color: #FF5555; /* TODO: use accent color */
+    --min-red-background-color: #770000; /* TODO: use accent color */
+    --max-red-background-color: #330000; /* TODO: use accent color */
+    
+    --foreground-color:         color-mix(in srgb, var(--max-red-foreground-color)  0%, var(--min-red-foreground-color));
+    --link-hovered-color:       color-mix(in srgb, var(--max-red-foreground-color) 60%, var(--min-red-foreground-color));
+    --gallery-color:            color-mix(in srgb, var(--max-red-foreground-color) 30%, var(--min-red-foreground-color));
+
+    --background-color:         color-mix(in srgb, var(--max-red-background-color) 100%, var(--min-red-background-color));
+    --header-background-color:  color-mix(in srgb, var(--max-red-background-color) 30%, var(--min-red-background-color));
+    --img-background-color:     color-mix(in srgb, var(--max-red-background-color) 80%, var(--min-red-background-color));
+    --nav-background-color:     color-mix(in srgb, var(--max-red-background-color) 60%, var(--min-red-background-color));
+    --focus-color:              #FF6600; /* TODO: use accent color */
+    
+    --button-color:             color-mix(in srgb, var(--max-red-foreground-color) 40%, var(--min-red-foreground-color));
+    --button-selection-color:   color-mix(in srgb, var(--max-red-background-color) 20%, var(--min-red-background-color));
+    
+    --p-font-size:              clamp(1rem, 4vw, 1.3rem);
+    --p-font-scale:             1.2;
+    --h6-font-size:             calc(var(--p-font-size)  * var(--p-font-scale));
+    --h5-font-size:             calc(var(--h6-font-size) * var(--p-font-scale));
+    --h4-font-size:             calc(var(--h5-font-size) * var(--p-font-scale));
+    --h3-font-size:             calc(var(--h4-font-size) * var(--p-font-scale));
+    --h2-font-size:             calc(var(--h3-font-size) * var(--p-font-scale));
+    --h1-font-size:             calc(var(--h2-font-size) * var(--p-font-scale));
+    
+    --header-height-raw:        15;
+    --header-height:            calc(var(--header-height-raw) * 1vh);
+    --header-font-size:         calc(min(var(--header-height-raw) * 0.5vw, var(--header-height-raw) * 1vh) * 0.4);
+    
+    --nav-width:                max(20vw, 15rem);
+    --nav-button-size:          calc(var(--nav-width) * 0.25);
+    --nav-font-size:            calc(var(--nav-button-size) * 0.7);
+    
+    --transition-header-link:   0.2s;
+    --transition-nav-state:     0.25s;
+    --transition-nav-entries:   0.1s;
+    --transition-gallery-hover: 0.25s;
+
+    
+    --card-width:               calc(max(4vw, 3rem)*3.5);
+    --card-height:              calc(var(--card-width)*2.5);
+    --card-title-scale:         0.1;
+    --card-button-scale:        0.1;
+    --card-title-font-size:     calc(var(--card-height)*var(--card-title-scale)*0.8);
+    --card-img-padding:         5px;
+
+    --gallery-per-row-count:    3;
+    --gallery-gap:              5px;
+}
+@font-face {
+    font-family: "Iosevka";
+    src: url("assets/fonts/iosevka-regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Han-Sans";
+    src: url("assets/fonts/source-han-sans-regular.ttf") format("truetype");
+}
+html {
+    scroll-behavior: smooth;
+}
+body, .han-sans {
+    font-family: "Han-Sans";
+}
+h1, h2, h3, h4, h5, h6, p, label, a {
+    font-family: "Iosevka";
+    word-wrap: break-word;
+    margin: 0;
+}
+h1 { font-size: var(--h1-font-size); }
+h2 { font-size: var(--h2-font-size); }
+h3 { font-size: var(--h3-font-size); }
+h4 { font-size: var(--h4-font-size); }
+h5 { font-size: var(--h5-font-size); }
+h6 { font-size: var(--h6-font-size); }
+li, a, p, label {
+    font-size: var(--p-font-size);
+}
+h1, h2, h3, h4, h5, h6, label, th {
+    font-weight: bold;
+}
+
+body {
+    /* Remove CSS default properties that may break layout */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    background:          var(--background-color);
+    color:               var(--foreground-color);
+    display:             grid;
+    grid-template-areas: "header     header"
+                         "navigation content"
+                         "footer     footer";
+    grid-template-rows:  var(--header-height) 1fr auto;
+}
+#body, #body.navStateEnabled {
+    transition: grid-template-columns var(--transition-nav-state) ease-in-out;
+    grid-template-columns: var(--nav-width) auto;
+}
+#body.navStateDisabled {
+    transition: grid-template-columns var(--transition-nav-state) ease-in-out;
+    grid-template-columns: var(--nav-button-size) auto;
+}
+#header {
+    grid-area: header;
+    background: var(--header-background-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#header img {
+    width: auto;
+    height: var(--header-height);
+    margin-right: var(--header-font-size);
+}
+#headerLinkList {
+    margin-right: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#headerLinkList a {
+    color: var(--foreground-color);
+    text-decoration: none;
+    font-size: var(--header-font-size);
+    transition: color var(--transition-header-link) ease-in-out;
+}
+#headerLinkList a + a {
+    margin-left: calc(var(--header-font-size) * 0.5);
+}
+#header a:hover {
+    color: var(--link-hovered-color);
+}
+#footer {
+    grid-area: footer;
+    background: var(--header-background-color);
+    width:  100vw;
+    z-index: 1;
+}
+#header h1, #footer h1 {
+    font-size: var(--header-font-size);
+    text-align: center;
+}
+#navigation {
+    grid-area: navigation;
+    background: var(--nav-background-color);
+    
+    display:             grid;
+    grid-template-areas: ".       button"
+                         "entries entries";
+    grid-template-rows:    var(--nav-button-size) 1fr;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+}
+#body #navigation, #body.navStateEnabled #navigation {
+    transition: grid-template-columns var(--transition-nav-state) ease-in-out;
+    grid-template-columns: auto var(--nav-button-size);
+}
+#body.navStateDisabled #navigation {
+    transition: grid-template-columns var(--transition-nav-state) ease-in-out;
+    grid-template-columns: minmax(0, var(--nav-width)) var(--nav-button-size);
+}
+#content    { grid-area: content;    background: var(--background-color); }
+.pageTop    { min-height: 90vh; }
+#navButton {
+    grid-area: button;
+    
+    display: grid;
+    justify-content: right;
+}
+#navEntriesNav {
+    opacity: 1;
+    transition: opacity var(--transition-nav-state) ease-in-out;
+}
+/* TODO: fix keyboard navigation */
+#body.navStateDisabled #navEntriesNav {
+    opacity: 0;
+    pointer-events: none;
+    aria-hidden: "true";
+    tabindex: -1;
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+#navEntriesNav ul {
+    list-style: none;
+    margin: 0;
+    margin-right: calc(var(--nav-button-size) * 0.2);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--nav-font-size)*0.2);
+}
+#navEntriesNav a {
+    color: var(--foreground-color);
+    text-decoration: none;
+    font-size: var(--nav-font-size);
+    display: block; 
+    text-align: right;
+    transition: color var(--transition-nav-entries) ease-in-out, letter-spacing var(--transition-nav-entries) ease-in-out;
+}
+#navEntriesNav a:hover {
+    color: var(--link-hovered-color);
+    letter-spacing: calc(var(--nav-font-size) * 0.07);
+}
+
+#navButton button {
+    background: var(--button-color);
+    width: calc(var(--nav-width) * 0.25);
+    border: calc(var(--nav-button-size) * 0.04) solid var(--button-selection-color);
+    outline: none;
+}
+#navButton button:hover {
+    filter: brightness(1.2);
+}
+#navEntries {
+    grid-area: entries;
+    
+    display: grid;
+    justify-content: right;
+}
+
+#sectionInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#sectionInfo div p + p {
+    margin-top: 1rem;
+}
+
+.tcDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tcContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.cardGrid {
+    display: grid;
+    grid-template-areas: "title"
+                         "image"
+                         "text"
+                         "button";
+    grid-template-rows: calc(var(--card-height)*var(--card-title-scale))
+                        var(--card-width)
+                        auto
+                        calc(var(--card-height)*var(--card-button-scale));
+    width: var(--card-width);
+    height: var(--card-height);
+    grid-template-columns: var(--card-width);
+    border: calc(var(--card-width)*0.02) solid var(--min-red-foreground-color);
+    border-radius: calc(var(--card-width)*0.02);
+    margin: 5px;
+    transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out;
+    z-index: 1;
+}
+.cardContainer:has(.cardGrid:hover) .cardGrid {
+    margin: 3px;
+    transform: scale(0.95);
+}
+.cardGrid:hover {
+    transform: scale(1.05) !important;
+}
+.cardGrid .title {
+    grid-area: title;
+    background: var(--header-background-color);
+    
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.cardGrid .title h3 {
+    font-size: var(--card-title-font-size);
+    text-align: center;
+}
+.cardGrid .image {
+    grid-area: image;
+    background: var(--img-background-color);
+}
+.cardGrid .image img {
+    position: relative;
+    left: var(--card-img-padding);
+    top: var(--card-img-padding);
+    width:  calc(var(--card-width) - 2*var(--card-img-padding));
+    height: calc(var(--card-width) - 2*var(--card-img-padding));
+    outline: var(--card-img-padding) solid var(--header-background-color);
+}
+.cardGrid .text {
+    grid-area: text;
+    background: var(--background-color);
+    text-align: center;
+}
+.cardGrid .text p {
+    font-size: calc(var(--card-width) * 0.07);
+}
+.cardGrid .text hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--min-red-foreground-color);
+  margin: 2px 0;
+  padding: 0;
+}
+.cardGrid .button {
+    grid-area: button;
+    background: var(--button-color);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.cardGrid .button a {
+    text-align: center;
+    color: var(--button-selection-color);
+    transition: filter 0.2s ease-in-out;
+}
+.cardGrid .button a:visited {
+    filter: brightness(0.4);
+}
+.cardGrid .button a:hover {
+    filter: brightness(1.7);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(var(--gallery-per-row-count), 1fr);
+    gap: var(--gallery-gap);
+}
+.gallery div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.gallery h3 {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity var(--transition-gallery-hover) ease-in-out;
+    color: var(--gallery-color);
+}
+.gallery div:hover h3 {
+    opacity: 1;
+}
+.gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: filter var(--transition-gallery-hover) ease-in-out;
+    border-radius: 7px;
+}
+.gallery div:hover img {
+    filter: blur(5px) brightness(0.4);
+}
+
+a:focus-visible, input:focus-visible, button:focus-visible {
+    outline: 3px solid var(--focus-color) !important;
+}
