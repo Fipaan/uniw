@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "Iosevka";
+    src: url("assets/fonts/iosevka-regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Han-Sans";
+    src: url("assets/fonts/source-han-sans-regular.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  font-family: "Han-Sans" !important; /* fallback font */
+  font-family: "Iosevka" !important;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+@media (min-width: 600px) {
+  h1 { font-size: 2rem; }
+  p  { font-size: 1.125rem; }
+}
+
+@media (min-width: 992px) {
+  h1 { font-size: 2.5rem; }
+  p  { font-size: 1.25rem; }
+}
+
+.three-boxes {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.box {
+  background-color: #007bff;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+@media (min-width: 600px) {
+  .three-boxes {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .box {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 992px) {
+  .box {
+    flex: 1 1 calc(33.333% - 1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  footer {
+    font-size: 0.85rem;
+  }
+  .card-title {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 991px) {
+  .card-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-title {
+    font-size: 1.25rem;
+  }
+}
