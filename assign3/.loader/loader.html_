@@ -1,5 +1,0 @@
-        <!-- Loader -->
-        <div id="loader">
-          <div class="spinner"></div>
-        </div>
-        <script src="loader.js"></script>
