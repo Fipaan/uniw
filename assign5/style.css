@@ -1,0 +1,174 @@
+/*
+Classes:
+--r-*: units with respect to 100% page-size
+--fs-*: used for font size
+--a-*: values related directly to accent
+--as-*: same as `--a-*` but secondary color
+--c-*: colors
+--w-*: width
+--h-*: height
+Modifiers:
+    -w: with respect to width
+    -h: with respect to height
+    -wh: depends both on width and height
+    -a: accent
+    -b: background
+    -f: foreground
+    -as: accent (secondary)
+    -bs: background (secondary)
+    -fs: foreground (secondary)
+    -r:  reverse
+    -bf: bootsrap focus
+    -tag: <tag>
+    <none>: default
+ */
+
+:root {
+    --r-w:      100vw;
+    --r-h:      100vh;
+    --r-wh-min: min(var(--r-w), var(--r-h));
+    --r-wh-max: max(var(--r-w), var(--r-h));
+
+    --fs:       max(calc(var(--r-wh-max)*0.02), 24px);
+    --fs-p:     calc(var(--fs)*1);
+    --fs-h1:    calc(var(--fs-p)*2);   
+    --fs-h2:    calc(var(--fs-p)*1.5); 
+    --fs-h3:    calc(var(--fs-p)*1.17);
+    --fs-h4:    calc(var(--fs-p)*1);   
+    --fs-h5:    calc(var(--fs-p)*0.83);
+    --fs-h6:    calc(var(--fs-p)*0.75);
+
+    --a-v:      270;
+    --a-s:      100%;
+    --as-shift: 30;
+    --as-v:     calc(var(--a-v) + var(--as-shift));
+    --c-a:      hsl(var(--a-v)  var(--a-s) 50%);
+    --c-as:     hsl(var(--as-v) var(--a-s) 50%);
+
+    --c-b-min:              hsl(var(--a-v) var(--a-s)  5%);
+    --c-b-max:              hsl(var(--a-v) var(--a-s) 40%);
+    --c-b:                  color-mix(in srgb, var(--c-b-max) 10%, var(--c-b-min));
+
+    --c-bs-min:             hsl(var(--as-v) var(--a-s)  5%);
+    --c-bs-max:             hsl(var(--as-v) var(--a-s) 40%);
+    --c-bs:                 color-mix(in srgb, var(--c-bs-max) 10%, var(--c-bs-min));
+    --c-b-bf:               color-mix(in srgb, var(--c-bs-max) 20%, var(--c-bs-min));
+    --c-hint:               color-mix(in srgb, var(--c-bs-max) 50%, var(--c-bs-min));
+    --c-bf-hint:            color-mix(in srgb, var(--c-bs-max) 90%, var(--c-bs-min));
+    --c-b-selection:        color-mix(in srgb, var(--c-bs-max) 30%, var(--c-bs-min));
+                            
+    --c-f-min:              hsl(var(--a-v) var(--a-s) 90%);
+    --c-f-max:              hsl(var(--a-v) var(--a-s) 50%);
+    --c-f:                  color-mix(in srgb, var(--c-f-max) 20%, var(--c-f-min));
+    --c-border:             color-mix(in srgb, var(--c-f-max) 10%, var(--c-f-min));
+                            
+    --c-fs-min:             hsl(var(--as-v) var(--a-s) 90%);
+    --c-fs-max:             hsl(var(--as-v) var(--a-s) 50%);
+    --c-fs:                 color-mix(in srgb, var(--c-fs-max) 20%, var(--c-fs-min));
+    --c-focus:              color-mix(in srgb, var(--c-fs-max) 70%, var(--c-fs-min));
+    --c-f-bf:               color-mix(in srgb, var(--c-fs-max) 20%, var(--c-fs-min));
+    --c-f-selection:        color-mix(in srgb, var(--c-fs-max) 30%, var(--c-fs-min));
+
+    --c-b-r:                var(--c-f);
+    --c-f-r:                var(--c-b);
+    --c-border-r:           color-mix(in srgb, var(--c-b-max) 10%, var(--c-b-min));
+
+    --c-valid:              #66FF00;
+    --c-invalid:            #BB0000;
+
+    --w-t0:     50vw;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, * {
+    background:   var(--c-b);
+    color:        var(--c-f);
+    border-color: var(--c-border);
+}
+
+*:focus {
+    background-color: var(--c-b-bf) !important;
+    color: var(--c-f-bf) !important;
+    outline: none !important;
+    border: 3px solid var(--c-focus) !important;
+    box-shadow: 0 0 0 0 #00000000 !important;
+}
+
+input.form-control,
+textarea.form-control {
+    background-color: var(--c-b-r);
+    color:            var(--c-f-r);
+    border-color:     var(--c-border-r);
+}
+.form-text {
+    color: var(--c-bf-hint);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--c-hint);
+}
+input:focus::placeholder,
+textarea:focus::placeholder {
+    color: var(--c-bf-hint);
+}
+
+
+.valid-feedback {
+    color: var(--c-valid) !important;
+}
+.invalid-feedback {
+    color: var(--c-invalid) !important;
+}
+
+::selection, ::-moz-selection {
+  background-color: var(--c-f-selection);
+  color: var(--c-b-selection);
+}
+
+.fsection {
+    width: 100vw;
+}
+
+.div-center {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#part1 {
+    position: relative;
+    font-size: var(--fs-h3);
+    width: 70%;
+}
+#part1 * {
+    width: 100%;
+}
+#part1 .ftext {
+    display: none; /* grid */
+    grid-template-areas: "header header"
+                         "prefix value";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    column-gap: calc(var(--fs-p));
+    justify-content: start;
+}
+#part1 .fheader {
+    grid-area: header;
+}
+#part1 .fprefixes {
+    grid-area: prefix;
+}
+#part1 .fvalues {
+    grid-area: value;
+}
+#part1 .fvalue {
+    width: 100%;
+}
