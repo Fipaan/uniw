@@ -30,11 +30,11 @@ function part1() {
     });
     observer.observe(sel("#part1 .ftext"), { childList: true, subtree: true, characterData: true });
     document.getElementById("part1Form").addEventListener("submit", function(event) {
-        if (!form.checkValidity()) return;
         event.preventDefault();
+        if (!this.checkValidity()) return;
 
-        const formData = new FormData(form);
-        form.reset();
+        const formData = new FormData(this);
+        this.reset();
         const data = Object.fromEntries(formData.entries());
 
         sel("#part1 .fname").innerText    = data.name;
