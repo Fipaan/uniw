@@ -171,8 +171,8 @@ function main() {
     updatePageSize();
     window.addEventListener("resize", updatePageSize);
     // Part 1. Introduction
-    // task0();
-    // task1();
+    task0();
+    task1();
     // Part 2. DOM Manipulation
     task2();
     task3();
