@@ -36,7 +36,7 @@ function task1() {
     let favoriteScaled = favoriteNumber*3
                       + (favoriteNumber/2 + 19)*10
                       - 2*(favoriteNumber+11);
-    let favoriteGoodMood = goodMood ? favoriteNumber : favoriteScaled;
+    let favoriteGoodMood = goodMood ? favoriteScaled : favoriteNumber;
     console.log("Favorite number:", favoriteNumber);
     console.log("Favorite number:", favoriteScaled,   "(when I have good mood)");
     console.log("Favorite number:", favoriteGoodMood, "(right now)");
