@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Assignment 6</title>
+        <link rel="stylesheet" href="style.css"> 
+        <script src="script.js"></script>
+    </head>
+    <body onload="setTimeout(main, 50)">
+        <h2>Assignment 6 - JavaScript Basics (DOM Manipulation & Events)</h2>
+    
+        <div class="task-box">
+            <h3>Task 2 - Changing Content</h3>
+            <p id="changeTextP">Cool text!</p>
+            <button id="changeTextBtn">Click me!</button>
+        </div>
+    
+        <div class="task-box">
+            <h3>Task 3 - Changing Styles</h3>
+            <div id="colorBlock">This is a color block.</div><br>
+            <button id="colorBtn">Change Background</button>
+            <button id="fontBtn">Change Font Size</button>
+        </div>
+    
+        <div class="task-box">
+            <h3>Task 4 - Creating & Removing Elements</h3>
+            <ul id="itemList">
+                <li>Item 1</li>
+            </ul>
+            <button id="addItemBtn">Add Item</button>
+            <button id="removeItemBtn">Remove Item</button>
+        </div>
+    
+        <div class="task-box">
+            <h3>Task 5 - Mouse Events</h3>
+            <div id="hoverBox" class="color-box"></div>
+        </div>
+    
+        <div class="task-box">
+            <h3>Task 6 - Keyboard Events</h3>
+            <input id="liveInput" type="text" placeholder="Type something...">
+            <p>Live preview: <span id="liveOutput"></span></p>
+        </div>
+    
+        <div class="task-box">
+            <h3>Task 7 - Form Validation</h3>
+            <form id="myForm">
+                <input id="formName"     placeholder="Name">
+                <input id="formEmail"    placeholder="Email">
+                <input id="formPassword" placeholder="Password"
+                       type="password">
+                <button type="submit">Submit</button>
+                <p id="formMsg"></p>
+            </form>
+        </div>
+    
+        <div class="task-box">
+            <h3>Task 8 - To-Do App</h3>
+            <input id="taskInput" placeholder="Enter new task">
+            <button id="addTaskBtn">Add Task</button>
+            <h4 id="todoErrorMsg"></h4>
+            <ul id="taskList"></ul>
+        </div>
+    </body>
+</html>

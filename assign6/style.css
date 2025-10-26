@@ -1,0 +1,144 @@
+/*
+Classes:
+--r-*: units with respect to 100% page-size
+--fs-*: used for font size
+--a-*: values related directly to accent
+--as-*: same as `--a-*` but secondary color
+--c-*: colors
+--w-*: width
+--h-*: height
+Modifiers:
+    -w: with respect to width
+    -h: with respect to height
+    -wh: depends both on width and height
+    -a: accent
+    -b: background
+    -f: foreground
+    -as: accent (secondary)
+    -bs: background (secondary)
+    -fs: foreground (secondary)
+    -r:  reverse
+    -bf: bootsrap focus
+    -tag: <tag>
+    <none>: default
+ */
+
+:root {
+    --r-w:      100vw;
+    --r-h:      100vh;
+    --r-wh-min: min(var(--r-w), var(--r-h));
+    --r-wh-max: max(var(--r-w), var(--r-h));
+
+    --fs:       max(calc(var(--r-wh-max)*0.02), 24px);
+    --fs-p:     calc(var(--fs)*1);
+    --fs-h1:    calc(var(--fs-p)*2);   
+    --fs-h2:    calc(var(--fs-p)*1.5); 
+    --fs-h3:    calc(var(--fs-p)*1.17);
+    --fs-h4:    calc(var(--fs-p)*1);   
+    --fs-h5:    calc(var(--fs-p)*0.83);
+    --fs-h6:    calc(var(--fs-p)*0.75);
+
+    --a-v:      270;
+    --a-s:      100%;
+    --as-shift: 30;
+    --as-v:     calc(var(--a-v) + var(--as-shift));
+    --c-a:      hsl(var(--a-v)  var(--a-s) 50%);
+    --c-as:     hsl(var(--as-v) var(--a-s) 50%);
+
+    --c-b-min:              hsl(var(--a-v) var(--a-s)  5%);
+    --c-b-max:              hsl(var(--a-v) var(--a-s) 40%);
+    --c-b:                  color-mix(in srgb, var(--c-b-max) 10%, var(--c-b-min));
+
+    --c-bs-min:             hsl(var(--as-v) var(--a-s)  5%);
+    --c-bs-max:             hsl(var(--as-v) var(--a-s) 40%);
+    --c-bs:                 color-mix(in srgb, var(--c-bs-max) 10%, var(--c-bs-min));
+                           
+    --c-f-min:              hsl(var(--a-v) var(--a-s) 90%);
+    --c-f-max:              hsl(var(--a-v) var(--a-s) 50%);
+    --c-f:                  color-mix(in srgb, var(--c-f-max) 20%, var(--c-f-min));
+    --c-border:             color-mix(in srgb, var(--c-f-max) 10%, var(--c-f-min));
+                            
+    --c-fs-min:             hsl(var(--as-v) var(--a-s) 90%);
+    --c-fs-max:             hsl(var(--as-v) var(--a-s) 50%);
+    --c-fs:                 color-mix(in srgb, var(--c-fs-max) 20%, var(--c-fs-min));
+    --c-focus:              color-mix(in srgb, var(--c-fs-max) 70%, var(--c-fs-min));
+
+    --c-b-r:                var(--c-f);
+    --c-f-r:                var(--c-b);
+    --c-border-r:           color-mix(in srgb, var(--c-b-max) 10%, var(--c-b-min));
+
+    --c-valid:              #66FF00;
+    --c-invalid:            #BB0000;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Iosevka";
+    src: url("../fonts/iosevka-regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Han-Sans";
+    src: url("../fonts/source-han-sans-regular.ttf") format("truetype");
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+h6 { font-size: var(--fs-h6); }
+li, a, p, label, button, div, input, html, body {
+    font-size: var(--fs-p);
+    background: var(--c-b);
+    color: var(--c-f);
+    border-color: var(--c-border);
+}
+h1, h2, h3, h4, h5, h6, label, th {
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+    font-family: "Han-Sans" !important; /* fallback font */
+    font-family: "Iosevka" !important;
+    line-height: 1.6;
+}
+
+
+.task-box {
+    border: calc(var(--fs)*0.07) solid;
+    border-radius: calc(var(--fs));
+    padding: calc(var(--fs)*1.5);
+    margin-bottom: calc(var(--fs)*2);
+    width: var(--r-w);
+}
+.color-box {
+    width: calc(var(--r-wh-min)*0.2);
+    height: calc(var(--r-wh-min)*0.2);
+    background-color: gray;
+    margin-top: 10px;
+    font-size: var(--fs-h4);
+}
+.error {
+    color: var(--c-invalid);
+}
+.success {
+    color: var(--c-valid);
+}
+#myForm {
+    display: flex;
+    flex-direction: column;
+    width: calc(var(--r-w)*0.4);
+}
+.todo-item.completed {
+    text-decoration: line-through;
+}
+.todo-btn {
+    margin-left: calc(var(--fs)*2);
+}
