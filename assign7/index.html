@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment #7 - jQuery</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+			    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			    crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <h1>Assignment #7 - jQuery</h1>
+        <section id="part1">
+            <h2>Task 1 - Selectors & CSS</h2>
+            <p id="text-id">text IDentified</p>
+            <p class="text-class">this paragraph attends classes regularly</p>
+            <p class="text-scope">And this one is playing Tag</p>
+            <button id="btn-change">Destroy text</button>
+        </section>
+        <section id="part2">
+            <h2>Task 2 - Visibility Methods</h2>
+            <button id="btn-hide">Hide</button>
+            <button id="btn-show">Show</button>
+            <button id="btn-toggle">Toggle</button>
+            <p id="visible-text">hehehehehehe</p>
+        </section>
+        <section id="fade">
+            <h2>Task 3 - Fade Methods</h2>
+            <button id="btn-fadein">Fade In</button>
+            <button id="btn-fadeout">Fade Out</button>
+            <button id="btn-fadetoggle">Fade Toggle</button>
+            <div id="img-container">
+                <img id="fade-img" src="kitty.jpg" alt="Kitten">
+            </div>
+        </section>
+        <section id="slide">
+            <h2>Task 4 - Slide Methods</h2>
+            <button id="btn-slide-toggle">Look, here's cutie!</button>
+            <div class="panel">Kitten is gone :(</div>
+        </section>
+        <section id="dom">
+            <h2>Task 5 - Add & Remove Elements</h2>
+            <button id="btn-add">Add very cool item</button>
+            <button id="btn-remove">Remove boring item</button>
+            <ul class="dynamic-list" id="list">
+                <li>Pizza</li>
+                <li>Sushi</li>
+            </ul>
+    
+            <h2>Task 6 - Modifying Attributes</h2>
+            <div id="img-container">
+                <img id="attr-img" src="kitty2.jpg" alt="Kitten">
+            </div>
+            <br>
+            <button id="btn-change-img">Another cat!</button>
+            <br><br>
+            <a id="dynamic-link" href="https://pixabay.com/images/search/cat/" target="_blank">Awesome cats nearby</a>
+            <button id="btn-change-link">Change Link</button>
+    
+            <h2>Task 7 - Form Interaction</h2>
+            <form id="live-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+            </form>
+            <div class="live-preview">
+                <p><strong>Name:</strong> <span id="live-name"></span></p>
+                <p><strong>Email:</strong> <span id="live-email"></span></p>
+            </div>
+        </section>
+        <section id="animations">
+            <h2>Task 8 - Basic Animation</h2>
+            <div id="anim-box-div">
+                <div id="anim-box"></div>
+            </div>
+            <button id="btn-anim">Increase this one ^</button>
+    
+            <h2>Task 9 - Sequential Animations</h2>
+            <div id="seq-box-div">
+                <div id="seq-box"></div>
+            </div>
+            <button id="btn-seq">Move box around</button>
+    
+            <h2>Task 10 - Combined Animation</h2>
+            <div id="combo-box-div">
+                <div id="combo-box"></div>
+            </div>
+            <button id="btn-combo">Absolute combo</button>
+        </section>
+        <section id="accordion-section">
+            <h2>Task 11 - Accordion Menu (Mini Project)</h2>
+            <h3>Fun cat facts!</h3>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">Only 20% of Orange Cats Are Female</div>
+                    <div class="accordion-content">
+                        Female cats have two X chromosomes (XX), while a male cat has one X chromosome and one Y chromosome (XY).
+                        Color in cats is mostly related to their sex because the gene causing color is on the X chromosome.<br><br>
+
+                        Because a male cat has only one X gene, if that X chromosome has the orange gene, he will be orange.
+                        This means that if an orange female cat has a litter of kittens, all the males will be orange-regardless of
+                        their dad’s color. But a female cat will only be orange if both of those X chromosomes carry the orange color,
+                        meaning both parents must be orange to create an orange female kitten.<br><br>
+
+                        We don’t actually know what percentage of cats are orange, but there are estimates that it’s somewhere between
+                        2–5% of all cats. So if your kitty is an orange female, she belongs to an elite club!
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Cat Whiskers Are as Sensitive as Human Fingertips</div>
+                    <div class="accordion-content">
+                        Cat whiskers are thicker and coarser than regular fur and have roots that are three times deeper. They are
+                        strategically located on the cat’s face to provide sensory equipment to help guide a cat through the day,
+                        aiding vision and helping the cat to navigate, much like antennae on insects.<br><br>
+
+                        Although the number of whiskers will vary by breed, most cats have 12 whiskers arranged in four rows on
+                        each cheek. These whiskers are very sensitive, and this part of the face also contains small glands that
+                        smell like your cat. This is one reason many cats love to have their faces rubbed!
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Cats Use Dewclaws To Help Them Grip</div>
+                    <div class="accordion-content">
+                        The dewclaw is the tiny little claw found up on the inner wrist of your cat - the one that is hard
+                        to clip and that overgrows very quickly.  Technically, the dewclaw is very similar to the human thumb,
+                        although it isn’t opposable. But cats can use it very effectively to grip onto a tree when climbing or
+                        to hold onto prey when hunting.<br><br>
+
+                        Dewclaws on cats rarely cause problems, but they will sometimes overgrow if they’re not trimmed regularly.
+                        In most cases, it isn’t necessary to surgically remove a cat’s dewclaws. And, like all other cat claws,
+                        it serves a function that your cat would miss if it wasn’t there.
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.petmd.com/cat/general-health/fun-facts-about-cats" target="_blank">Reference</a>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,302 @@
+/*
+Classes:
+--r-*:  units with respect to 100% page-size (handled via js, they are not 1-to-1 to vw and vh)
+--fs-*: used for font size
+--a-*:  values related directly to accent
+--as-*: same as `--a-*` but secondary color
+--c-*:  colors
+--ch-*: colors (hover)
+--w-*:  width
+--h-*:  height
+--u-*:  unit (TODO: remove)
+Modifiers:
+    -w: with respect to width
+    -h: with respect to height
+    -wh: depends both on width and height
+    -a: accent
+    -b: background
+    -f: foreground
+    -as: accent (secondary)
+    -bs: background (secondary)
+    -fs: foreground (secondary)
+    -r:  reverse
+    -bf: bootsrap focus
+    -tag: <tag>
+    <none>: default
+ */
+
+:root {
+    --r-w:      100vw;
+    --r-h:      100vh;
+    --r-wh-min: min(var(--r-w), var(--r-h));
+    --r-wh-max: max(var(--r-w), var(--r-h));
+
+    --fs:       max(calc(var(--r-wh-max)*0.02), 24px);
+    --fs-p:     calc(var(--fs)*1);
+    --fs-h1:    calc(var(--fs-p)*2);   
+    --fs-h2:    calc(var(--fs-p)*1.5); 
+    --fs-h3:    calc(var(--fs-p)*1.17);
+    --fs-h4:    calc(var(--fs-p)*1);   
+    --fs-h5:    calc(var(--fs-p)*0.83);
+    --fs-h6:    calc(var(--fs-p)*0.75);
+
+    --a-v:      30;
+    --a-s:      100%;
+    --as-shift: 20;
+    --as-v:     calc(var(--a-v) + var(--as-shift));
+    --c-a:      hsl(var(--a-v)  var(--a-s) 50%);
+    --c-as:     hsl(var(--as-v) var(--a-s) 50%);
+
+    --c-b-min:  hsl(var(--a-v) var(--a-s)  5%);
+    --c-b-max:  hsl(var(--a-v) var(--a-s) 40%);
+    --c-b:      color-mix(in srgb, var(--c-b-max) 10%, var(--c-b-min));
+    --c-b-btn:  color-mix(in srgb, var(--c-b-max) 90%, var(--c-b-min));
+
+    --c-bs-min:         hsl(var(--as-v) var(--a-s)  5%);
+    --c-bs-max:         hsl(var(--as-v) var(--a-s) 40%);
+    --c-bs:             color-mix(in srgb, var(--c-bs-max) 10%, var(--c-bs-min));
+    --c-bs-section:     color-mix(in srgb, var(--c-bs-max) 20%, var(--c-bs-min));
+    --c-bs-accordion:   color-mix(in srgb, var(--c-bs-max)  5%, var(--c-bs-min));
+                           
+    --c-f-min:      hsl(var(--a-v) var(--a-s) 90%);
+    --c-f-max:      hsl(var(--a-v) var(--a-s) 50%);
+    --c-f:          color-mix(in srgb, var(--c-f-max)  20%, var(--c-f-min));
+    --c-f-h2:       color-mix(in srgb, var(--c-f-max)  60%, var(--c-f-min));
+    --c-border:     color-mix(in srgb, var(--c-f-max)  10%, var(--c-f-min));
+    --ch-shadow:    color-mix(in srgb, var(--c-border) 70%, transparent);
+    --c-shadow:     color-mix(in srgb, var(--c-border) 40%, transparent);
+                            
+    --c-fs-min:     hsl(var(--as-v) var(--a-s) 90%);
+    --c-fs-max:     hsl(var(--as-v) var(--a-s) 50%);
+    --c-fs:         color-mix(in srgb, var(--c-fs-max) 20%, var(--c-fs-min));
+    --c-focus:      color-mix(in srgb, var(--c-fs-max) 70%, var(--c-fs-min));
+    --c-text-scope: color-mix(in srgb, var(--c-fs-max) 60%, var(--c-fs-min));
+
+    --c-b-r:          var(--c-f);
+    --c-f-r:          var(--c-b);
+    --ch-b-accordion: color-mix(in srgb, var(--c-b-max) 40%, var(--c-b-min));
+    --c-border-r:     color-mix(in srgb, var(--c-b-max) 10%, var(--c-b-min));
+
+    --c-bs-r:   var(--c-fs);
+    --c-fs-r:   var(--c-bs);
+
+    --c-valid:      #66FF00;
+    --c-invalid:    #BB0000;
+
+    --u-sm: calc(var(--fs-p) * 0.25);
+    --u-md: calc(var(--fs-p) * 0.5);
+    --u-lg: calc(var(--fs-p) * 1);
+    --u-xl: calc(var(--fs-p) * 2);
+
+    --box-size: calc(var(--fs-p) * 3);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Iosevka";
+    src: url("../fonts/iosevka-regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Han-Sans";
+    src: url("../fonts/source-han-sans-regular.ttf") format("truetype");
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+h6 { font-size: var(--fs-h6); }
+li, a, p, label, button, div, input, html, body {
+    font-size: var(--fs-p);
+    background: var(--c-b);
+    color: var(--c-f);
+    border-color: var(--c-border);
+}
+h1, h2, h3, h4, h5, h6, label, th {
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+    font-family: "Han-Sans" !important; /* fallback font */
+    font-family: "Iosevka" !important;
+    line-height: 1.6;
+}
+
+::selection,
+::-moz-selection {
+    background: var(--c-bs-r);
+    color:      var(--c-fs-r);
+    text-shadow: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--u-lg);
+    padding: var(--u-xl);
+    background: linear-gradient(180deg, var(--c-b) 0%, var(--c-bs) 100%);
+}
+
+section {
+    width: 85%;
+    border: 0.15rem solid var(--c-border);
+    border-radius: var(--u-md);
+    padding: var(--u-lg);
+    box-shadow: 0 0 var(--u-lg) var(--c-shadow);
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+section, section * {
+    background: var(--c-bs-section);
+}
+section:hover {
+    transform: translateY(calc(var(--u-sm) * -0.5));
+    box-shadow: 0 0 calc(var(--u-lg) * 1.5) var(--ch-shadow);
+}
+
+h2 {
+    color: var(--c-f-h2);
+    text-align: center;
+    margin-bottom: var(--u-md);
+}
+
+/* buttons */
+button {
+    cursor: pointer;
+    background: var(--c-b-btn);
+    color: var(--c-f);
+    border: none;
+    border-radius: var(--u-sm);
+    padding: var(--u-sm) var(--u-md);
+    font-weight: bold;
+    transition: all 0.25s ease;
+}
+button:hover {
+    background: var(--c-bs-r);
+    color:      var(--c-fs-r);
+    transform:  scale(1.05);
+    box-shadow: 0 0 var(--u-md) var(--c-shadow);
+}
+
+/* images */
+img {
+    max-width: calc(var(--fs-p) * 10);
+    border-radius: var(--u-sm);
+    border: 0.15rem solid var(--c-border);
+}
+
+#img-container {
+    max-height: calc(var(--fs-p) * 10);
+}
+#img-container > img {
+    position: relative;
+    left: 50%;
+    top:  50%;
+    transform: translate(-50%, -50%);
+    max-width:  100%;
+    max-height: 100%;
+    width: auto;
+    height: 100%;
+}
+
+/* collapsible panels */
+.panel {
+    border: 0.15rem solid var(--c-border);
+    border-radius: var(--u-sm);
+    margin-top: var(--u-md);
+    overflow: hidden;
+    display: none;
+    padding: var(--u-md);
+    background: var(--c-b);
+}
+
+/* dynamic list */
+ul.dynamic-list {
+    list-style-type: "✨ ";
+    padding-left: var(--u-lg);
+}
+ul.dynamic-list li {
+    margin: var(--u-sm) 0;
+}
+
+/* form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--u-md);
+    margin-top: var(--u-md);
+}
+input {
+    background: var(--c-b);
+    border: 0.15rem solid var(--c-border);
+    border-radius: var(--u-sm);
+    padding: var(--u-sm) var(--u-md);
+    color: var(--c-f);
+}
+input:focus {
+    border-color: var(--c-focus);
+    outline: none;
+    box-shadow: 0 0 var(--u-md) var(--c-focus);
+}
+.live-preview {
+    color: var(--c-fs);
+    font-style: italic;
+}
+
+/* animation boxes */
+#anim-box, #seq-box, #combo-box {
+    width: var(--box-size);
+    height: var(--box-size);
+    background: var(--c-bs-r);
+    border-radius: var(--u-sm);
+    position: relative;
+    margin: var(--u-md) auto;
+}
+#anim-box-div {
+    height: calc(var(--box-size) * 1.67);
+}
+#seq-box-div {
+    height: calc(var(--box-size) * 2.33);
+}
+#combo-box-div {
+    height: calc(var(--box-size) * 2.67);
+}
+
+/* === Accordion Menu (Mini Project) === */
+.accordion {
+    width: 80%;
+}
+.accordion-item {
+    margin-bottom: var(--u-sm);
+    border-radius: var(--u-sm);
+    overflow: hidden;
+    border: 0.15rem solid var(--c-border);
+}
+.accordion-header {
+    background: var(--c-b);
+    color: var(--c-f);
+    padding: var(--u-md);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.25s ease;
+}
+.accordion-header:hover {
+    background: var(--ch-b-accordion);
+}
+.accordion-content {
+    background: var(--c-bs-accordion);
+    display: none;
+    padding: var(--u-md);
+    border-top: 0.15rem solid var(--c-border);
+}
