@@ -1,0 +1,25 @@
+:root {
+    --brand:#0d6efd;
+    --muted:#6c757d;
+}
+
+body {
+    font-family: Inter, system-ui, -apple-system,
+                 "Segoe UI", Roboto, "Helvetica Neue",
+                 Arial;
+}
+.site-header .navbar-brand {
+    font-weight: 700;
+}
+footer {
+    font-size: 0.9rem;
+}
+.card img{
+    height:     180px;
+    object-fit: cover;
+}
+@media (max-width:576px) {
+    .card img{
+        height: 140px;
+    }
+}
