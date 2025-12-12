@@ -52,11 +52,11 @@
 }
 @font-face {
     font-family: "Iosevka";
-    src: url("../fonts/iosevka-regular.ttf") format("truetype");
+    src: url("/fonts/iosevka-regular.ttf") format("truetype");
 }
 @font-face {
     font-family: "Han-Sans";
-    src: url("../fonts/source-han-sans-regular.ttf") format("truetype");
+    src: url("/fonts/source-han-sans-regular.ttf") format("truetype");
 }
 html {
     scroll-behavior: smooth;
