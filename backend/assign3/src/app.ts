@@ -1,20 +1,21 @@
-const express  = require("express")
-const fs       = require("fs")
-const path     = require("path")
-const log      = require("./middleware/log")
-const register = require("./router/register")
-const login    = require("./router/login")
-const utils    = require("./utils/index")
-const port    = 3000
-const app     = express()
+import express, { Request, Response, NextFunction } from "express"
+import fs from "fs"
+import path from "path"
+import log from "./middleware/log"
+import register from "./router/register"
+import login from "./router/login"
+import utils from "./utils/index"
+
+const INDEX_PATH = path.join(__dirname, "public", "index.html")
+const port: number = 3000
+const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, "public")))
 app.use(express.json())
 
 let exiting = false
-let reloading = false
-function terminate(reloading) {
+function terminate(reloading: boolean): void {
     if (exiting) return
     exiting = true
     utils.INFO(reloading ? "reloading..." : "exiting...")
@@ -33,15 +34,15 @@ app.use("/",         log.reqs)
 app.use("/register", register)
 app.use("/login",    login)
 
-app.get('/', (req, res) => {
-  res.sendFile("/index.html")
+app.get('/', (req: Request, res: Response) => {
+    res.sendFile(INDEX_PATH)
 })
 
 const server = app.listen(port, () => {
     utils.INFO(`Todo Website listening on port ${port}`)
 })
 
-server.on("error", (err) => {
+server.on("error", (err: NodeJS.ErrnoException) => {
     utils.ERROR(err.message)
     process.exit(1)
 })

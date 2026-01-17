@@ -1,5 +1,7 @@
+import { Request, Response, NextFunction } from "express"
+
 const FULL_NAME_MIN_LENGTH = 4
-function verifyFullName(res, full_name) {
+function verifyFullName(res: Response, full_name: unknown): Response | undefined {
     if (full_name === undefined)
         return res.status(400).json({
             error: "full name is missing"
@@ -20,7 +22,7 @@ function verifyFullName(res, full_name) {
 }
 
 const emailRegex = /^[^\s@]+@[^\s@]+$/
-function verifyEmail(res, email) {
+function verifyEmail(res: Response, email: unknown): Response | undefined {
     if (email === undefined) return undefined
     if (typeof email !== "string")
         return res.status(400).json({
@@ -33,7 +35,7 @@ function verifyEmail(res, email) {
 }
 
 const USERNAME_MIN_LENGTH = 6
-function verifyUsername(res, username) {
+function verifyUsername(res: Response, username: unknown): Response | undefined {
     if (username === undefined) return undefined
     if (typeof username !== "string")
         return res.status(400).json({
@@ -52,7 +54,7 @@ function verifyUsername(res, username) {
 
 const PASSWORD_MIN_LENGTH = 8
 const PASSWORD_MAX_LENGTH = 20
-function verifyPass(res, pass) {
+function verifyPass(res: Response, pass: unknown): Response | undefined {
     if (pass === undefined)
         return res.status(400).json({
             error: "password is missing"
@@ -69,21 +71,21 @@ function verifyPass(res, pass) {
         return res.status(400).json({
             error: "password is too short"
         })
-    if (pass.length < PASSWORD_MAX_LENGTH)
+    if (pass.length > PASSWORD_MAX_LENGTH)
         return res.status(400).json({
             error: "password is too long"
         })
     return undefined
 }
 
-module.exports = {
-    reg(req, res, next) {
+export default {
+    reg(req: Request, res: Response, next: NextFunction): void | Response {
         if (req.body === undefined)
             return res.status(400).json({
                 error: "body is missing"
             })
         const {full_name, email, username, pass} = req.body
-        let result = undefined
+        let result: Response | undefined = undefined
         result = verifyFullName(res, full_name)
         if (result !== undefined) return result
         if (email === undefined && username === undefined)
