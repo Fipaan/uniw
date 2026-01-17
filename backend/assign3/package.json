@@ -1,0 +1,19 @@
+{
+  "name": "wapi",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Fipaan",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "watch": "supervisor -q -w src -e js,html src/app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.4",
+    "supervisor": "^0.12.0"
+  }
+}
