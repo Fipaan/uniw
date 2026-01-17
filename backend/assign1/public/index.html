@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BMI Calculator</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="center">
+            <h1>BMI Calculator</h1>
+            <form action="/calculate-bmi" method="POST" class="center">
+                <label>Weight (kg):</label><br>
+                <input type="number" name="weight" step="0.1" required><br><br>
+            
+                <label>Height (m):</label><br>
+                <input type="number" name="height" step="0.01" required><br><br>
+            
+                <label>Exercies (per day):</label><br>
+                <input type="number" name="exercies" step="1" required><br><br>
+            
+                <label>Sleep time (hours)</label><br>
+                <input type="number" name="sleepTime" step="0.1" required><br><br>
+            
+                <button type="submit">Calculate BMI</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+body {
+    background: #181818;
+    color: #EFCFFF;
+}
+
+input, button {
+    background: #333333;
+    color:      #CC67FF;
+    border-radius: 5px;
+    border: 1px solid #CC67FF;
+}
+a:focus, input:focus, button:focus {
+    outline: 1px solid #FF14A1;
+} 
+
+a {
+    color: lightblue;
+}
+a:visited {
+    color: #6D4182;
+}
+
+.err {
+    color: #FF5555;
+}
+.warn {
+    color: #FEFF55;
+}
+.info {
+    color: #56FF55;
+}
+
+.center {
+    max-width: fit-content;
+    margin-left:  auto;
+    margin-right: auto;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
