@@ -5,6 +5,7 @@ import log from "./middleware/log"
 import register from "./router/register"
 import login from "./router/login"
 import utils from "./utils/index"
+import { GenericError } from "./utils/error"
 
 const INDEX_PATH = path.join(__dirname, "public", "index.html")
 const port: number = 3000
@@ -36,6 +37,23 @@ app.use("/login",    login)
 
 app.get('/', (req: Request, res: Response) => {
     res.sendFile(INDEX_PATH)
+})
+
+app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
+    let status: number = 500
+    let name:   string = "UnknownError"
+    let error:  string = "unknown error"
+    if (err instanceof Error) {
+        error = err.message
+        if (err instanceof Error && err.name) {
+            name   = err.name
+        }
+        if (err instanceof GenericError) {
+            status = err.status
+        }
+    }
+    if (status === 500) utils.ERROR(`${name}(${status}): ${error}`)
+    return res.status(status).json({ name, error })
 })
 
 const server = app.listen(port, () => {
