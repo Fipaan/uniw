@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from "express"
 import fs from "fs"
-import path from "path"
-import utils from "../utils/index"
+import path, { dirname } from "path"
+import { fileURLToPath } from "url"
+import utils from "../utils/index.js"
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const LOG_FILE = path.join(__dirname, "..", "..", "server.log")
 

@@ -4,7 +4,7 @@
   "description": "",
   "license": "MIT",
   "author": "Fipaan",
-  "type": "commonjs",
+  "type": "module",
   "main": "app.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -12,13 +12,19 @@
     "dev": "tsc-watch --onsuccess \"node build/app.js\""
   },
   "dependencies": {
-    "express": "^5.2.1"
-  },
-  "devDependencies": {
-    "@types/express": "^5.0.6",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
     "express-session": "^1.18.2",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.1.4",
+    "mongoose": "^9.1.4"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/jquery": "^3.5.33",
+    "@types/jsonwebtoken": "^9.0.10",
     "tsc-watch": "^7.2.0",
     "typescript": "^5.9.3"
   }

@@ -1,10 +1,10 @@
 import express from "express"
-import valid from "../middleware/valid"
-import * as registerController from "../controller/registerController"
+import valid from "../middleware/valid.js"
+import * as registerController from "../controller/registerController.js"
 
 const router = express.Router()
 
-router.use("/", valid.reg)
+router.use("/", valid.check)
 router.post("/", registerController.register_post)
 
 export default router

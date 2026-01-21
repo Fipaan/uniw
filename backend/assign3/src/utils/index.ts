@@ -1,9 +1,7 @@
 import util from "util"
 
-const INFO_PREFIX  = "INFO:  "
-const ERROR_PREFIX = "ERROR: "
-
-// TODO: proton.me/mail 4:38 PM
+const INFO_PREFIX  = "INFO: "
+const ERROR_PREFIX = "ERROR:"
 
 export default {
     INFO_S(...args: unknown[]): string {

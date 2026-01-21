@@ -1,13 +1,12 @@
 import { Request, Response, NextFunction } from "express"
 import { BadRequestError } from "../utils/error.js"
-import { verifyFullName, verifyEmail, verifyUsername, verifyPass } from "./impl.js"
+import { verifyEmail, verifyUsername, verifyPass } from "./impl.js"
 
 export default {
     check(req: Request, res: Response, next: NextFunction): void | Response {
         if (req.body === undefined)
             throw new BadRequestError("body is missing")
-        const {full_name, email, username, pass} = req.body
-        verifyFullName(full_name)
+        const {email, username, pass} = req.body
         if (email === undefined && username === undefined)
             throw new BadRequestError("email/username is missing")
         verifyEmail(email)

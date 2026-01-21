@@ -1,0 +1,57 @@
+:root {
+    --t-color:  0.2s;
+}
+
+*, body {
+    transition: background var(--t-color) ease-in-out,
+                color      var(--t-color) ease-in-out !important;
+}
+body {
+    background: var(--back);
+    color:      var(--fore);
+}
+.navbar, .navbar-brand, .navbar a, .navbar div {
+    background: var(--back-inv);
+    color:      var(--fore-inv);
+}
+.navbar a:hover {
+    color: var(--bs-primary);
+}
+.form-control, .tablee th {
+    background: var(--back-form);
+    color:      var(--fore-form);
+}
+.form-control:focus, .form-control:hover, .tablee tr {
+    background: var(--back-form-focus);
+    color:      var(--fore-form-focus);
+}
+.form-control::placeholder {
+    color:      var(--form-hint);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--fore) inset !important;
+  box-shadow: 0 0 0px 1000px var(--fore) inset !important;
+  -webkit-text-fill-color: var(--back) !important;
+}
+
+a {
+    text-decoration: none;
+    color:           var(--fore);
+}
+
+.entry .text {
+    color: #0d6efd;
+}
+.err {
+    color: red;
+}
+.ok {
+    color: lime;
+}
+.unknown {
+    color: gray;
+}
