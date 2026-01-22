@@ -117,7 +117,7 @@ HTTP status codes follow the custom error classes in `src/utils/error.ts`:
 * 404 NotFoundError
 * 409 ConflictError
 * 500 InternalServerError (or unknown errors)
-* <status> <StatusName> (in general)
+* **status** **StatusName** (in general)
 
 ---
 
