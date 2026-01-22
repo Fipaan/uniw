@@ -76,7 +76,7 @@ function confToggler() {
         style.setProperty("--fore-form-focus", THEME.foreFormFocus)
         style.setProperty("--form-hint",       THEME.hintForm)
         $themeToggle.addClass(THEME.toAdd)
-        $themeToggle.removeClass(THEME.toDelete)
+        $themeToggle.removeClass(THEME.toRemove)
         const icon = $themeToggle.data(THEME.isDark ? "icon-on" : "icon-off")
         $themeToggle.find("i").attr("class", `bi ${icon}`)
     }

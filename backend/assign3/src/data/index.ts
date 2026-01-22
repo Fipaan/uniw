@@ -124,7 +124,7 @@ export function parseDesc(_desc?: unknown): string | undefined {
     if (_desc === undefined) return undefined
     if (typeof _desc !== "string") throw new BadRequestError("`desc` is not string")
     const desc = _desc.trim()
-    if (desc.length === 0) throw new BadRequestError("`desc` is empty")
+    if (desc.length === 0) return undefined
     if (desc.length > 400)
         throw new BadRequestError("`desc` is too long (max 400)")
     return desc

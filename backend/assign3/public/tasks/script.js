@@ -182,13 +182,18 @@ function newTask(task) {
         if (dirty.status !== undefined)
             payload.done = $task.data("done") === true
         
-        await $.ajax({
-            url:         `${URL}/${id}`,
-            method:      "POST",
-            contentType: "application/json",
-            data:        JSON.stringify(payload),
-            xhrFields:   { withCredentials: true },
-        })
+        try {
+            await $.ajax({
+                url:         `${URL}/${id}`,
+                method:      "POST",
+                contentType: "application/json",
+                data:        JSON.stringify(payload),
+                xhrFields:   { withCredentials: true },
+            })
+        } catch (err) {
+            is_jqXHR = false
+            handleErr(err)
+        }
 
         setTaskDirty($task, "title",  false)
         setTaskDirty($task, "desc",   false)
