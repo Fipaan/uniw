@@ -11,7 +11,6 @@ import profile from "./router/profile.js"
 import tasks from "./router/tasks.js"
 import utils from "./utils/index.js"
 import { GenericError, InternalServerError } from "./utils/error.js"
-import { encryptPass } from "./data/index.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,7 +30,7 @@ async function terminate(reloading: boolean): Promise<void> {
     utils.INFO(reloading ? "reloading..." : "exiting...")
     try {
         await mongoose.disconnect()
-        utils.ERROR("Successfully disconnected MongoDB")
+        utils.INFO("Successfully disconnected MongoDB")
     } catch (err) {
         utils.ERROR(`Couldn't disconnect MongoDB: ${err}`)
     }
@@ -64,7 +63,7 @@ app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
         error = err.message
         if (err instanceof Error && err.name) {
-            name   = err.name
+            name = err.name
         }
         if (err instanceof GenericError) {
             status = err.status
@@ -78,14 +77,11 @@ const server = app.listen(port, async () => {
     utils.INFO(`Todo Website listening on port ${port}`)
  
     try {
-        /*
         const pass: string | undefined = process.env.MONGODB_PASS
         if (pass === undefined)
             throw new InternalServerError("MONGODB_PASS is not set")
         await mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${encodeURIComponent(pass)}@cluster0.7tnosi5.mongodb.net/?appName=Cluster0`)
-        */
-        await mongoose.connect("mongodb://localhost:27017")
-        utils.INFO("Succesfully connected to MongoDB")
+        utils.INFO("Successfully connected to MongoDB")
     } catch (err) {
         utils.ERROR(`Couldn't connect MongoDB: ${err}`)
         process.exit(1)

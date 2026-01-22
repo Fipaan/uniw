@@ -1,4 +1,4 @@
-import mongoose, { Query, Schema, model, HydratedDocument, Types } from "mongoose"
+import { Query, Schema, model, HydratedDocument, Types } from "mongoose"
 import { Request } from "express"
 import bcrypt from "bcrypt"
 import utils from "../utils/index.js"
@@ -54,15 +54,15 @@ export function basicQuery(): Query<UserDocument[], UserDocument> {
 
 export async function findUser(username?: string, email?: string): Promise<UserDocument> {
     if (username === undefined && email === undefined)
-        throw new InternalServerError("username and email are empty")
+        throw new InternalServerError("Username and email are empty")
     
     const query = basicQuery()
     if (email    !== undefined) query.where("email").equals(email)
     if (username !== undefined) query.where("username").equals(username)
     const users: UserDocument[] = await query.exec()
-    if (users.length === 0) throw new ConflictError("user does not exist")
+    if (users.length === 0) throw new ConflictError("User does not exist")
     if (users.length > 1) {
-        utils.ERROR("users are not unique!")
+        utils.ERROR("Users are not unique!")
         if (email    !== undefined) utils.INFO(`Email:    ${email   }`)
         if (username !== undefined) utils.INFO(`Username: ${username}`)
     }

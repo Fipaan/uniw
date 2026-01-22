@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express"
 import { BadRequestError } from "../utils/error.js"
-import { UserDocument, reqUser, Task,
+import { reqUser, Task,
          parseTitle, parseDesc, parseDone } from "../data/index.js"
 
 export const tasks_get = async (
     req: Request, res: Response, next: NextFunction
 ): Promise<Response> => {
-    const user: UserDocument = await reqUser(req)
+    const user = await reqUser(req)
     const tasks = await Task.find({ userId: user._id }).sort({ createdAt: -1 }).exec()
     
     return res.status(200).json(tasks)

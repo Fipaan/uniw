@@ -13,14 +13,14 @@ export const register_post = async (
     }
     const { full_name, email, username, pass }: Body = req.body
 
-    if (email !== undefined)
-        await basicQuery().where("email").equals(email).exec().then((users: UserDocument[]) => {
-            if (users.length > 0) throw new ConflictError("user with such email already exists")
-        })
-    if (username !== undefined)
-        await basicQuery().where("username").equals(username).exec().then((users: UserDocument[]) => {
-            if (users.length > 0) throw new ConflictError("user with such username already exists")
-        })
+    if (email !== undefined) {
+        const users = await basicQuery().where("email").equals(email).exec()
+        if (users.length > 0) throw new ConflictError("User with such email already exists")
+    }
+    if (username !== undefined) {
+        const users = await basicQuery().where("username").equals(username).exec()
+        if (users.length > 0) throw new ConflictError("User with such username already exists")
+    }
 
     const user = new User({
         full_name: full_name,

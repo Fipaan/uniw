@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from "express"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
-import { ConflictError, UnauthorizedError, InternalServerError } from "../utils/error.js"
-import utils from "../utils/index.js"
-import { UserDocument, User, findUser } from "../data/index.js"
+import { UnauthorizedError } from "../utils/error.js"
+import { User, findUser } from "../data/index.js"
 
-const ACCESS_TOKEN_TTL_SECS  = 15 * 60
+const ACCESS_TOKEN_TTL_MINS  = 15
+const ACCESS_TOKEN_TTL_SECS  = 15 * ACCESS_TOKEN_TTL_MINS
 const ACCESS_TOKEN_TTL_MSECS = ACCESS_TOKEN_TTL_SECS * 1000
 
 function generateAccessToken(user: User): string {
@@ -29,9 +29,9 @@ export const login_post = async (
     }
     const { email, username, pass }: Body = req.body
 
-    const user: UserDocument = await findUser(username, email)
+    const user = await findUser(username, email)
     if (!(await bcrypt.compare(pass, user.pass)))
-        throw new UnauthorizedError("invalid password")
+        throw new UnauthorizedError("Invalid password")
 
     const token = generateAccessToken(user)
     res.cookie("access_token", token, {
