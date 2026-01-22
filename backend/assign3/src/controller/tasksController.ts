@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express"
 import { BadRequestError } from "../utils/error.js"
-import { reqUser, Task,
-         parseTitle, parseDesc, parseDone } from "../data/index.js"
+import { parseTitle, parseDesc, parseDone } from "../data/index.js"
+import { reqUser } from "../models/user.js"
+import { Task } from "../models/task.js"
 
 export const tasks_get = async (
     req: Request, res: Response, next: NextFunction

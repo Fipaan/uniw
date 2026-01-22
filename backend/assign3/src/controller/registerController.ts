@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express"
 import { ConflictError } from "../utils/error.js"
-import { User, UserDocument, encryptPass, basicQuery } from "../data/index.js"
+import { encryptPass } from "../data/index.js"
+import { User, UserDocument, basicQuery } from "../models/user.js"
 
 export const register_post = async (
     req: Request, res: Response, next: NextFunction

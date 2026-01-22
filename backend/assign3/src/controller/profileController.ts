@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express"
-import { reqUser } from "../data/index.js"
+import { reqUser } from "../models/user.js"
 
 export const profile_get = async (
     req: Request, res: Response, next: NextFunction

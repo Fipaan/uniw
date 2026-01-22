@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import { UnauthorizedError } from "../utils/error.js"
-import { User, findUser } from "../data/index.js"
+import { User, findUser } from "../models/user.js"
 
 const ACCESS_TOKEN_TTL_MINS  = 15
 const ACCESS_TOKEN_TTL_SECS  = 15 * ACCESS_TOKEN_TTL_MINS

@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express"
 import { Types } from "mongoose"
 import { BadRequestError, NotFoundError, InternalServerError } from "../utils/error.js"
-import { reqUser, Task,
-         parseTitle, parseDesc, parseDone } from "../data/index.js"
+import { parseTitle, parseDesc, parseDone } from "../data/index.js"
+import { reqUser } from "../models/user.js"
+import { Task } from "../models/task.js"
 
 function getId(req: Request): string {
     const { id } = req.params as { id?: string }
