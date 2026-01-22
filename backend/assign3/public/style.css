@@ -14,6 +14,12 @@ body {
     background: var(--back-inv);
     color:      var(--fore-inv);
 }
+.alert a {
+    color: var(--bs-danger-text-emphasis);
+}
+.alert a:hover {
+    color: var(--bs-danger);
+}
 .navbar a:hover {
     color: var(--bs-primary);
 }
@@ -21,7 +27,7 @@ body {
     background: var(--back-form);
     color:      var(--fore-form);
 }
-.form-control:focus, .form-control:hover, .tablee tr {
+.form-control:focus, .form-control:hover, .tablee td {
     background: var(--back-form-focus);
     color:      var(--fore-form-focus);
 }
@@ -54,4 +60,14 @@ a {
 }
 .unknown {
     color: gray;
+}
+
+.unsaved-mark {
+    display:     none;
+    margin-left: .25rem;
+    color:       var(--bs-danger);
+    font-weight: 700;
+}
+td.unsaved .unsaved-mark {
+    display: inline;
 }

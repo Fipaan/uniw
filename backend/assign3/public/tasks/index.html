@@ -40,9 +40,9 @@
         </nav>
         
         <div class="container mt-4">
-            <div id="error" class="alert alert-danger d-none d-flex justify-content-between">
+            <div id="error" class="alert alert-danger d-none d-flex justify-content-between align-items-center">
                 <h1 class="text"></h1>
-                <a href="../login">Back to login</a>
+                <a href="../login"><h2>Back to login</h2></a>
             </div>
 
             <div id="mainData">
@@ -67,9 +67,9 @@
             <h1>Create Task</h1>
 
             <form id="taskForm" class="row g-2 mb-4">
-                <input class="form-control col-md-3" name="title" placeholder="Title" required>
-                <input class="form-control col-md-5" name="description" placeholder="Description">
-                <select class="form-control col-md-2" name="status">
+                <input  id="title"  class="form-control col-md-3" name="title" placeholder="Title" required>
+                <input  id="desc"   class="form-control col-md-5" name="description" placeholder="Description">
+                <select id="status" class="form-control col-md-2" name="status">
                     <option>pending</option>
                     <option>completed</option>
                 </select>
