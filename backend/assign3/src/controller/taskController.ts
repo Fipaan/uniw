@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import { Types } from "mongoose"
-import { BadRequestError, NotFoundError, InternalServerError, ForbiddenError } from "../utils/error.js"
+import { BadRequestError, NotFoundError, InternalServerError, RestrictedError } from "../utils/error.js"
 import { parseTitle, parseDesc, parseDone } from "../data/index.js"
 import { reqUser } from "../models/user.js"
 import { Task } from "../models/task.js"
@@ -28,12 +28,12 @@ export const task_post = async (
         throw new BadRequestError("Expected at least one field to modify")
 
     const task = await Task.findById(id)
-    if (task === undefined) throw new NotFoundError("Task not found")
-    if (!task.userId.equals(user._id)) throw new ForbiddenError("You do not own this task")
+    if (task === null) throw new NotFoundError("Task not found")
+    if (!task.userId.equals(user._id)) throw new RestrictedError("You do not own this task")
     
-    if (_body.title !== undefined) task.title = parseTitle(_body.title)
-    if (_body.desc  !== undefined) task.desc  = parseDesc(_body.desc)
-    if (_body.done  !== undefined) task.done  = parseDone(_body.done)
+    task.title = parseTitle(_body.title) ?? task.title
+    task.desc  = parseDesc(_body.desc)   ?? task.desc
+    task.done  = parseDone(_body.done)   ?? task.done
     await task.save()
 
     return res.status(201).json({
