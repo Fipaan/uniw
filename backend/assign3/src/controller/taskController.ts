@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express"
 import { Types } from "mongoose"
-import { BadRequestError, NotFoundError, InternalServerError } from "../utils/error.js"
+import { BadRequestError, NotFoundError, InternalServerError, ForbiddenError } from "../utils/error.js"
 import { parseTitle, parseDesc, parseDone } from "../data/index.js"
 import { reqUser } from "../models/user.js"
 import { Task } from "../models/task.js"
@@ -16,6 +16,7 @@ export const task_post = async (
     req: Request, res: Response, next: NextFunction
 ): Promise<Response> => {
     const id = getId(req)
+    const user = await reqUser(req)
     type BodyRaw = {
         title?: unknown;
         desc?:  unknown;
@@ -25,21 +26,21 @@ export const task_post = async (
     if (_body === undefined) throw new BadRequestError("Missing body")
     if ((_body.title ?? _body.desc ?? _body.done) === undefined)
         throw new BadRequestError("Expected at least one field to modify")
-    const task = await Task.findByIdAndUpdate(id, { $set: {
-            title: parseTitle(_body.title),
-            desc:  parseDesc(_body.desc),
-            done:  parseDone(_body.done),
-        }},
-        {
-            new: true,
-            runValidators: true,
-        }
-    )
+
+    const task = await Task.findById(id)
+    if (task === undefined) throw new NotFoundError("Task not found")
+    if (!task.userId.equals(user._id)) throw new ForbiddenError("You do not own this task")
+    
+    if (_body.title !== undefined) task.title = parseTitle(_body.title)
+    if (_body.desc  !== undefined) task.desc  = parseDesc(_body.desc)
+    if (_body.done  !== undefined) task.done  = parseDone(_body.done)
+    await task.save()
+
     return res.status(201).json({
         changed: {
-            title: _body.title === undefined,
-            desc:  _body.desc  === undefined,
-            done:  _body.done  === undefined,
+            title: _body.title !== undefined,
+            desc:  _body.desc  !== undefined,
+            done:  _body.done  !== undefined,
         },
     })
 }
