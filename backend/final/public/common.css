@@ -1,0 +1,29 @@
+:root {
+    --app-maxw: 1100px;
+}
+
+body {
+    background: #f8f9fa;
+}
+
+.app-container {
+    max-width: var(--app-maxw);
+}
+
+.muted-small {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.badge-tag {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+pre.codebox {
+    background: #0b1020;
+    color: #e9edf5;
+    padding: 12px;
+    border-radius: 8px;
+    overflow: auto;
+    font-size: 0.9rem;
+}
